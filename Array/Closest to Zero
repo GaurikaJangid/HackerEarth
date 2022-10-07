@@ -1,0 +1,29 @@
+Statement: You have been given an integer array A of size N. You need to print the number with the value closest to zero. If there are multiple elements, 
+print the number with greater value.
+
+
+
+N = int(input())
+
+B = list(map(int, input().split()))
+A = sorted(B)
+
+ans = 0
+
+if A[0] == 0:
+    ans = 0
+elif A[0]>0:
+    ans = A[0]
+elif A[N-1]<0:
+    ans = A[N-1]
+else:
+    for i in range(N):
+        if A[i]>=0 and A[i] != A[i-1]:
+            index = i
+            break
+            ans = min(abs(A[index]), abs(A[index-1]))
+        else:
+            ans = abs(A[i])
+
+
+print(ans)
